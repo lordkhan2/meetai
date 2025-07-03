@@ -13,7 +13,7 @@ export const HomeView = () => {
     }
 
     return (
-        <div>
+        <div className="p-2">
             <p>Logged in as {session.user.name}</p>
             <Button onClick={() => authClient.signOut({ fetchOptions: { onSuccess: () => router.push("/sign-in") } })}>sign out</Button>
         </div>
