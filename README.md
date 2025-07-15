@@ -22,4 +22,8 @@
 
 -APIs & Services: OpenAI, Stream Video & Chat SDK, BetterAuth, Polar
 
+<<<<<<< HEAD
 -Tools: GitHub, CodeRabbit, Postman, Figma
+=======
+-Tools: GitHub, CodeRabbit, Postman, Figma
+>>>>>>> 404e129c403b79c58fa41f83ef1d51c8301fca71
