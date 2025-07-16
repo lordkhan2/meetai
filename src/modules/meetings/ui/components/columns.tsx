@@ -41,7 +41,7 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
         header: "Meeting Name",
         cell: ({ row }) => (
             <div className="flex flex-col gap-y-1">
-                <span className="flex items-center gap-x-2">{row.original.name}</span>
+                <span className="flex items-center gap-x-2 font-bold">{row.original.name}</span>
                 <div className="flex items-center gap-x-2">
                     <div className="flex items gap-x-1">
                         <CornerDownRightIcon className="size-3 text-muted-foreground" />
