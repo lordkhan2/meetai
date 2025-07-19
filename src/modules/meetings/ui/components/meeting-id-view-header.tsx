@@ -1,7 +1,23 @@
-import { Breadcrumb, BreadcrumbItem, BreadcrumbLink, BreadcrumbList, BreadcrumbSeparator } from "@/components/ui/breadcrumb";
+import {
+    Breadcrumb,
+    BreadcrumbItem,
+    BreadcrumbLink,
+    BreadcrumbList,
+    BreadcrumbSeparator,
+} from "@/components/ui/breadcrumb";
 import { Button } from "@/components/ui/button";
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuContent } from "@/components/ui/dropdown-menu";
-import { ChevronRightIcon, MoreVerticalIcon, PencilIcon, TrashIcon } from "lucide-react";
+import {
+    DropdownMenu,
+    DropdownMenuTrigger,
+    DropdownMenuItem,
+    DropdownMenuContent,
+} from "@/components/ui/dropdown-menu";
+import {
+    ChevronRightIcon,
+    MoreVerticalIcon,
+    PencilIcon,
+    TrashIcon,
+} from "lucide-react";
 import Link from "next/link";
 
 interface Props {
@@ -11,7 +27,12 @@ interface Props {
     onRemove: () => void;
 }
 
-export const MeetingIdViewHeader = ({ meetingId, meetingName, onEdit, onRemove }: Props) => {
+export const MeetingIdViewHeader = ({
+    meetingId,
+    meetingName,
+    onEdit,
+    onRemove,
+}: Props) => {
     return (
         <div className="flex items-center justify-between">
             <Breadcrumb>
@@ -25,8 +46,13 @@ export const MeetingIdViewHeader = ({ meetingId, meetingName, onEdit, onRemove }
                         <ChevronRightIcon />
                     </BreadcrumbSeparator>
                     <BreadcrumbItem>
-                        <BreadcrumbLink asChild className="font-medium text-xl text-foreground">
-                            <Link href={`/meetings/${meetingId}`}>{meetingName}</Link>
+                        <BreadcrumbLink
+                            asChild
+                            className="font-medium text-xl text-foreground"
+                        >
+                            <Link href={`/meetings/${meetingId}`}>
+                                {meetingName}
+                            </Link>
                         </BreadcrumbLink>
                     </BreadcrumbItem>
                 </BreadcrumbList>

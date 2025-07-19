@@ -10,18 +10,23 @@ interface Props {
 
 export const CallView = ({ meetingId }: Props) => {
     const trpc = useTRPC();
-    const { data } = useSuspenseQuery(trpc.meetings.getOne.queryOptions({ id: meetingId }));
+    const { data } = useSuspenseQuery(
+        trpc.meetings.getOne.queryOptions({ id: meetingId }),
+    );
 
     if (data.status === "completed") {
         return (
-            <div className="flex h-screen items-center justify-center">
-                <ErrorState title="Meeting has ended" description="You can no longer join the meeting" />
+            <div className='flex h-screen items-center justify-center'>
+                <ErrorState
+                    title='Meeting has ended'
+                    description='You can no longer join the meeting'
+                />
             </div>
         );
     }
 
     return (
-        <div className="">
+        <div className=''>
             <CallProvider meetingId={meetingId} meetingName={data.name} />
         </div>
     );

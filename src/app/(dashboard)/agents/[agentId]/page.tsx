@@ -1,4 +1,8 @@
-import { AgentIdView, AgentsIdViewError, AgentsIdViewLoading } from "@/modules/agents/ui/views/agent-id-view";
+import {
+    AgentIdView,
+    AgentsIdViewError,
+    AgentsIdViewLoading,
+} from "@/modules/agents/ui/views/agent-id-view";
 import { getQueryClient, trpc } from "@/trpc/server";
 import { HydrationBoundary, dehydrate } from "@tanstack/react-query";
 import { Suspense } from "react";
@@ -15,7 +19,7 @@ const Page = async ({ params }: Props) => {
     void queryClient.prefetchQuery(
         trpc.agents.getOne.queryOptions({
             id: agentId,
-        })
+        }),
     );
     return (
         <HydrationBoundary state={dehydrate(queryClient)}>

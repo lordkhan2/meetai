@@ -17,7 +17,7 @@ export const AgentIdFilter = () => {
         trpc.agents.getMany.queryOptions({
             pageSize: 100,
             search: agentSearch,
-        })
+        }),
     );
     return (
         <CommandSelect
@@ -28,7 +28,11 @@ export const AgentIdFilter = () => {
                 value: agent.id,
                 children: (
                     <div className="flex items-center gap-x-2">
-                        <GeneratedAvatar seed={agent.name} variant="botttsNeutral" className="size-4" />
+                        <GeneratedAvatar
+                            seed={agent.name}
+                            variant="botttsNeutral"
+                            className="size-4"
+                        />
                         {agent.name}
                     </div>
                 ),

@@ -1,4 +1,8 @@
-import { AgentsView, AgentsViewError, AgentsViewLoading } from "@/modules/agents/ui/views/agents-view";
+import {
+    AgentsView,
+    AgentsViewError,
+    AgentsViewLoading,
+} from "@/modules/agents/ui/views/agents-view";
 import { getQueryClient, trpc } from "@/trpc/server";
 import { dehydrate, HydrationBoundary } from "@tanstack/react-query";
 import { Suspense } from "react";
@@ -26,7 +30,9 @@ const Page = async ({ searchParams }: Props) => {
     }
 
     const queryClient = getQueryClient();
-    void queryClient.prefetchQuery(trpc.agents.getMany.queryOptions({ ...filters }));
+    void queryClient.prefetchQuery(
+        trpc.agents.getMany.queryOptions({ ...filters }),
+    );
     return (
         <>
             <AgentsListHeader />

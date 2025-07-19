@@ -1,7 +1,13 @@
 "use client";
 import { LoaderIcon } from "lucide-react";
 import { useEffect, useState } from "react";
-import { Call, CallingState, StreamCall, StreamVideo, StreamVideoClient } from "@stream-io/video-react-sdk";
+import {
+    Call,
+    CallingState,
+    StreamCall,
+    StreamVideo,
+    StreamVideoClient,
+} from "@stream-io/video-react-sdk";
 import { useMutation } from "@tanstack/react-query";
 
 import { useTRPC } from "@/trpc/client";
@@ -18,9 +24,17 @@ interface Props {
     userImage: string;
 }
 
-export const CallConnect = ({ meetingId, meetingName, userId, userName, userImage }: Props) => {
+export const CallConnect = ({
+    meetingId,
+    meetingName,
+    userId,
+    userName,
+    userImage,
+}: Props) => {
     const trpc = useTRPC();
-    const { mutateAsync: generateToken } = useMutation(trpc.meetings.generateToken.mutationOptions());
+    const { mutateAsync: generateToken } = useMutation(
+        trpc.meetings.generateToken.mutationOptions(),
+    );
     const [client, setClient] = useState<StreamVideoClient>();
     useEffect(() => {
         const _client = new StreamVideoClient({
@@ -62,14 +76,14 @@ export const CallConnect = ({ meetingId, meetingName, userId, userName, userImag
 
     if (!client || !call) {
         return (
-            <div className="flex h-screen items-center justify-center bg-radial from-sidebar-accent to-sidebar">
-                <LoaderIcon className="size-6 animate-spin text-white" />
+            <div className='flex h-screen items-center justify-center bg-radial from-sidebar-accent to-sidebar'>
+                <LoaderIcon className='size-6 animate-spin text-white' />
             </div>
         );
     }
 
     return (
-        <div className="h-screen">
+        <div className='h-screen'>
             <StreamVideo client={client}>
                 <StreamCall call={call}>
                     <CallUI meetingName={meetingName} />

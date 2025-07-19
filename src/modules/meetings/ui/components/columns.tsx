@@ -3,7 +3,14 @@
 import { format } from "date-fns";
 import humanizeDuration from "humanize-duration";
 import { ColumnDef } from "@tanstack/react-table";
-import { CircleCheckIcon, CircleXIcon, ClockArrowUpIcon, ClockFadingIcon, CornerDownRightIcon, LoaderIcon } from "lucide-react";
+import {
+    CircleCheckIcon,
+    CircleXIcon,
+    ClockArrowUpIcon,
+    ClockFadingIcon,
+    CornerDownRightIcon,
+    LoaderIcon,
+} from "lucide-react";
 
 import { cn } from "@/lib/utils";
 import { Badge } from "@/components/ui/badge";
@@ -41,14 +48,26 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
         header: "Meeting Name",
         cell: ({ row }) => (
             <div className="flex flex-col gap-y-1">
-                <span className="flex items-center gap-x-2 font-bold">{row.original.name}</span>
+                <span className="flex items-center gap-x-2 font-bold">
+                    {row.original.name}
+                </span>
                 <div className="flex items-center gap-x-2">
                     <div className="flex items gap-x-1">
                         <CornerDownRightIcon className="size-3 text-muted-foreground" />
-                        <span className="text-sm text-muted-foreground max-w-[200px] truncate capitalize">{row.original.agent.name}</span>
+                        <span className="text-sm text-muted-foreground max-w-[200px] truncate capitalize">
+                            {row.original.agent.name}
+                        </span>
                     </div>
-                    <GeneratedAvatar variant="botttsNeutral" seed={row.original.agent.name} className="size-4" />
-                    <span className="text-sm text-muted-foreground">{row.original.startedAt ? format(row.original.startedAt, "MMM d") : ""}</span>
+                    <GeneratedAvatar
+                        variant="botttsNeutral"
+                        seed={row.original.agent.name}
+                        className="size-4"
+                    />
+                    <span className="text-sm text-muted-foreground">
+                        {row.original.startedAt
+                            ? format(row.original.startedAt, "MMM d")
+                            : ""}
+                    </span>
                 </div>
             </div>
         ),
@@ -57,11 +76,27 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
         accessorKey: "status",
         header: "Status",
         cell: ({ row }) => {
-            const Icon = statusIconMap[row.original.status as keyof typeof statusIconMap];
+            const Icon =
+                statusIconMap[
+                    row.original.status as keyof typeof statusIconMap
+                ];
 
             return (
-                <Badge variant="outline" className={cn("capitalize [&>svg]:size-4 text-muted-foreground", statusColorMap[row.original.status as keyof typeof statusColorMap])}>
-                    <Icon className={cn(row.original.status === "processing" && "animate-spin")} />
+                <Badge
+                    variant="outline"
+                    className={cn(
+                        "capitalize [&>svg]:size-4 text-muted-foreground",
+                        statusColorMap[
+                            row.original.status as keyof typeof statusColorMap
+                        ],
+                    )}
+                >
+                    <Icon
+                        className={cn(
+                            row.original.status === "processing" &&
+                                "animate-spin",
+                        )}
+                    />
                     {row.original.status}
                 </Badge>
             );
@@ -71,9 +106,14 @@ export const columns: ColumnDef<MeetingGetMany[number]>[] = [
         accessorKey: "duration",
         header: "duration",
         cell: ({ row }) => (
-            <Badge variant="outline" className="capitalize [&>svg]:size-4 flex items-center gap-x-2">
+            <Badge
+                variant="outline"
+                className="capitalize [&>svg]:size-4 flex items-center gap-x-2"
+            >
                 <ClockFadingIcon className="text-blue-700" />
-                {row.original.duration ? formatDuration(row.original.duration) : "No duration"}
+                {row.original.duration
+                    ? formatDuration(row.original.duration)
+                    : "No duration"}
             </Badge>
         ),
     },
