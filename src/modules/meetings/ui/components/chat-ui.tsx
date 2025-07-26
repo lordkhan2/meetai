@@ -5,7 +5,7 @@ import {
     useCreateChatClient,
     Chat,
     Channel,
-    MessageInput,
+    // MessageInput,
     MessageList,
     Thread,
     Window,
